@@ -6,10 +6,10 @@ const sendTelegramMessage = require("./sms");
 
 
 const conn = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'travel'
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 });
 
 
@@ -132,17 +132,6 @@ app.post("/save_booking", function (req, res) {
 app.get('/contact', function (req, res) {
     res.render('contact.ejs');
 });
-app.listen(1000)
-
-
-// {
-//     "first_name": "Tushar",
-//     "last_name": "Gangarde",
-//     "email": "tushargangarde28@gmail.com",
-//     "mobile": "8080976977",
-//     "from_city": "Ahmednagar",
-//     "to_city": "pune",
-//     "travel_date": "2025-12-31",
-//     "travel_time": "22:20"
-//   }
-
+app.listen(process.env.PORT || 3000, function () {
+    console.log("Server started on port 3000");
+});
