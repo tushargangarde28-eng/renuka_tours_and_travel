@@ -1,0 +1,216 @@
+<%- include("navbar.ejs") %>
+
+<!-- Page Header -->
+<section class="page-header bg-primary text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-bold mb-3">Contact Us</h1>
+                <p class="lead">Get in touch with us for bookings and inquiries</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-4">
+                            <i class="fa fa-envelope text-warning me-2"></i>Send us a Message
+                        </h3><form id="contactForm" action="/save_booking" method="post">
+
+                            <!-- Name -->
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label fw-semibold">First Name</label>
+                                    <input type="text" name="first_name" class="form-control"
+                                           placeholder="Enter your first name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Last Name</label>
+                                    <input type="text" name="last_name" class="form-control"
+                                           placeholder="Enter your last name" required>
+                                </div>
+                            </div>
+                        
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Email Address</label>
+                                <input type="email" name="email" class="form-control"
+                                       placeholder="Enter your email" required>
+                            </div>
+                        
+                            <!-- Mobile -->
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Mobile Number</label>
+                                <input type="tel" name="mobile" class="form-control"
+                                       placeholder="Enter your mobile number"
+                                       pattern="[0-9]{10}" required>
+                            </div>
+                        
+                            <!-- Cities -->
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label fw-semibold">From City</label>
+                                    <input type="text" name="from_city" class="form-control"
+                                           placeholder="Enter pickup city" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">To City</label>
+                                    <input type="text" name="to_city" class="form-control"
+                                           placeholder="Enter destination city" required>
+                                </div>
+                            </div>
+                        
+                            <!-- Date & Time -->
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label class="form-label fw-semibold">Date</label>
+                                    <input type="date" name="travel_date" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Time</label>
+                                    <input type="time" name="travel_time" class="form-control" required>
+                                </div>
+                            </div>
+                        
+                            <!-- Button -->
+                            <button type="submit" class="btn btn-warning w-100 fw-bold py-2">
+                                <i class="fa fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </form>  
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-5">
+                <div class="contact-info">
+                    <h3 class="fw-bold mb-4">
+                        <i class="fa fa-info-circle text-warning me-2"></i>Contact Information
+                    </h3>
+                    <div class="contact-item mb-4 p-4 bg-light rounded shadow-sm">
+                        <div class="d-flex align-items-start">
+                            <div class="contact-icon me-3">
+                                <i class="fa fa-phone-alt fa-2x text-warning"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Phone Numbers</h5>
+                                <p class="mb-1">
+                                    <a href="tel:+919921295514" class="text-decoration-none text-dark">
+                                        <i class="fa fa-phone text-warning me-2"></i>+91-9921295514
+                                    </a>
+                                </p>
+                                <p class="mb-0">
+                                    <a href="tel:+918999295514" class="text-decoration-none text-dark">
+                                        <i class="fa fa-phone text-warning me-2"></i>+91-8999295514
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item mb-4 p-4 bg-light rounded shadow-sm">
+                        <div class="d-flex align-items-start">
+                            <div class="contact-icon me-3">
+                                <i class="fa fa-clock fa-2x text-warning"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Business Hours</h5>
+                                <p class="mb-1"><strong>Monday - Sunday:</strong></p>
+                                <p class="mb-0 text-muted">24/7 Available</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item mb-4 p-4 bg-light rounded shadow-sm">
+                        <div class="d-flex align-items-start">
+                            <div class="contact-icon me-3">
+                                <i class="fa fa-map-marker-alt fa-2x text-warning"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Service Area</h5>
+                                <p class="mb-0 text-muted">Local & Outstation Services Available</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item p-4 bg-warning rounded shadow-sm text-center">
+                        <h5 class="fw-bold mb-3">Quick Booking</h5>
+                        <p class="mb-3">Call us now for instant booking</p>
+                        <a href="tel:+919921295514" class="btn btn-dark btn-lg w-100">
+                            <i class="fa fa-phone me-2"></i>Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Map Section (Optional) -->
+<section class="map-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="fw-bold text-center mb-4">Find Us</h3>
+                <div class="map-container bg-white rounded shadow-sm p-4 text-center">
+                    <i class="fa fa-map-marked-alt fa-4x text-warning mb-3"></i>
+                    <p class="text-muted mb-0">Service available throughout the region</p>
+                    <p class="text-muted">Contact us for specific location details</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <h5 class="fw-bold mb-3">RENUKA TOURS AND TRAVEL</h5>
+                <p class="text-muted mb-0">Your trusted travel partner for safe and comfortable journeys.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                <h6 class="fw-semibold mb-2">Contact Us</h6>
+                <p class="mb-1">
+                    <a href="tel:+919921295514" class="text-white text-decoration-none">
+                        <i class="fa fa-phone text-warning me-2"></i>+91-9921295514
+                    </a>
+                </p>
+                <p class="mb-0">
+                    <a href="tel:+918999295514" class="text-white text-decoration-none">
+                        <i class="fa fa-phone text-warning me-2"></i>+91-8999295514
+                    </a>
+                </p>
+            </div>
+        </div>
+        <hr class="my-3 bg-secondary">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="text-muted mb-0">&copy; 2024 Renuka Tours and Travel. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script>
+    // Form submission handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your message! We will get back to you soon.');
+        this.reset();
+    });
+</script> -->
+</body>
+</html>
