@@ -9,7 +9,8 @@ const conn = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
     password: process.env.PASSWORD,
-    database: process.env.DATABASE
+    database: process.env.DATABASE,
+    port: process.env.PORT
 });
 
 
@@ -132,6 +133,6 @@ app.post("/save_booking", function (req, res) {
 app.get('/contact', function (req, res) {
     res.render('contact.ejs');
 });
-app.listen(process.env.PORT || 3000, function () {
-    console.log("Server started on port 3000");
+app.listen(process.env.Webport || 8000, function () {
+    console.log("Server started on port 8000");
 });
