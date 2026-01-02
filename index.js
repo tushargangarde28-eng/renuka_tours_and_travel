@@ -1,16 +1,26 @@
 const express = require('express');
 const bodyparser = require("body-parser");
-const mysql = require('mysql2');
-require("dotenv").config();
 const sendTelegramMessage = require("./sms");
 
 
+require("dotenv").config();
+const mysql = require("mysql2");
+
 const conn = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-    port: process.env.PORT
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
+  ssl: { rejectUnauthorized: false }
+});
+
+conn.connect(err => {
+  if (err) {
+    console.error("❌ MySQL connection error:", err.message);
+    process.exit(1);
+  }
+  console.log("✅ MySQL Connected to Clever Cloud");
 });
 
 
@@ -133,6 +143,10 @@ app.post("/save_booking", function (req, res) {
 app.get('/contact', function (req, res) {
     res.render('contact.ejs');
 });
-app.listen(process.env.Webport || 8000, function () {
-    console.log("Server started on port 8000");
+
+
+const PORT = process.env.APP_PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });
