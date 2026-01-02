@@ -144,6 +144,12 @@ app.get('/contact', function (req, res) {
     res.render('contact.ejs');
 });
 
+console.log(
+  "BOT_TOKEN:",
+  process.env.BOT_TOKEN
+    ? process.env.BOT_TOKEN.slice(0, 10)
+    : "❌ MISSING"
+);
 
 const PORT = process.env.PORT || process.env.APP_PORT || 3000;
 
