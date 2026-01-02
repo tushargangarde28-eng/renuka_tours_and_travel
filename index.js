@@ -6,22 +6,28 @@ const sendTelegramMessage = require("./sms");
 require("dotenv").config();
 const mysql = require("mysql2");
 
-const conn = mysql.createConnection({
+const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   port: process.env.DB_PORT,
-  ssl: { rejectUnauthorized: false }
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
-conn.connect(err => {
+// Test the pool connection ONCE
+pool.getConnection((err, connection) => {
   if (err) {
     console.error("❌ MySQL connection error:", err.message);
     process.exit(1);
   }
   console.log("✅ MySQL Connected to Clever Cloud");
+  connection.release(); // VERY IMPORTANT
 });
+
+module.exports = pool;
 
 
 const app = express();
@@ -41,7 +47,7 @@ app.post("/home_form", async function (req, res) {
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
-    conn.query(
+    pool.query(
         sql,
         [
             d.first_name,
@@ -99,7 +105,7 @@ app.post("/save_booking", function (req, res) {
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
-    conn.query(
+    pool.query(
         sql,
         [
             d.first_name,
@@ -151,6 +157,7 @@ console.log(
     : "❌ MISSING"
 );
 
+console.log("BOT_TOKEN length:", process.env.BOT_TOKEN?.length);
 const PORT = process.env.PORT || process.env.APP_PORT || 3000;
 
 app.listen(PORT, () => {
